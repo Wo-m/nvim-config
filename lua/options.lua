@@ -27,5 +27,7 @@ opt.shiftwidth = 4               -- num:  Size of an indent
 opt.softtabstop = 4              -- num:  Number of spaces tabs count for in insert mode
 opt.tabstop = 4                  -- num:  Number of spaces tabs count for
 
+opt.list = true
+
 -- Theme
-vim.cmd[[colorscheme tokyonight]]
+vim.cmd[[colorscheme meh]]
