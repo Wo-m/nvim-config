@@ -28,6 +28,6 @@ opt.softtabstop = 4              -- num:  Number of spaces tabs count for in ins
 opt.tabstop = 4                  -- num:  Number of spaces tabs count for
 
 opt.list = true
-
+vim.cmd[[set noshowmode]]
 -- Theme
-vim.cmd[[colorscheme meh]]
+vim.cmd[[colorscheme rasmus]]

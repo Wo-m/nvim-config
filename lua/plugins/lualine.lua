@@ -17,7 +17,14 @@ return {
 
 			meh_orange = '#dd7766',
 			meh_dark_grey = '#24252a',
-			meh_purple = "#cc99cc"
+			meh_purple = "#cc99cc",
+
+			rasmus_bg = "#1a1a19",
+			rasmus_white = "#d1d1d1",
+			rasmus_yellow = "#ffc591",
+			rasmus_blue = "#8db4d4",
+			rasmus_magenta = "#de9bc8",
+			rasmus_cyan = "7bb099"
 			}
 
 		-- Themes
@@ -57,10 +64,27 @@ return {
 			},
 		}
 
+		local wom_rasmus = {
+			normal = {
+				a = { fg = colors.black, bg = colors.rasmus_white },
+				b = { fg = colors.white, bg = colors.grey },
+				c = { fg = colors.black, bg = colors.rasmus_bg },
+			},
+			
+			insert = { a = { fg = colors.black, bg = colors.rasmus_yellow } },
+			visual = { a = { fg = colors.black, bg = colors.rasmus_cyan } },
+			replace = { a = { fg = colors.black, bg = colors.rasmus_blue } },
+			command = { a = { fg = colors.black, bg = colors.rasmus_magenta } },
+		  
+			inactive = {
+				y = { fg = colors.black, bg = colors.meh_orange },
+			},
+		}
+
 		-- Line Style
 		lualine.setup({
 			options = {
-				theme = wom_meh,
+				theme = wom_rasmus,
 				component_separators = '|',
 				section_separators = { left = '', right = '' },
 			},

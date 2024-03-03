@@ -14,5 +14,9 @@ return {
 	{
 		"davidosomething/vim-colors-meh",
 		lazy = true
+	},
+	{
+		"kvrohit/rasmus.nvim",
+		lazy = true
 	}
 }
