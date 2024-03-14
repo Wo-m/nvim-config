@@ -24,7 +24,9 @@ return {
 			rasmus_yellow = "#ffc591",
 			rasmus_blue = "#8db4d4",
 			rasmus_magenta = "#de9bc8",
-			rasmus_cyan = "7bb099"
+			rasmus_cyan = "7bb099",
+
+			adwaita_bg = "1D1D1D"
 			}
 
 		-- Themes
@@ -68,7 +70,7 @@ return {
 			normal = {
 				a = { fg = colors.black, bg = colors.rasmus_white },
 				b = { fg = colors.white, bg = colors.grey },
-				c = { fg = colors.black, bg = colors.rasmus_bg },
+				c = { fg = colors.black, bg = colors.adwaita_bg },
 			},
 			
 			insert = { a = { fg = colors.black, bg = colors.rasmus_yellow } },
@@ -84,7 +86,7 @@ return {
 		-- Line Style
 		lualine.setup({
 			options = {
-				theme = wom_rasmus,
+				theme = wom_tokyonight,
 				component_separators = '|',
 				section_separators = { left = '', right = '' },
 			},

@@ -30,4 +30,4 @@ opt.tabstop = 4                  -- num:  Number of spaces tabs count for
 opt.list = true
 vim.cmd[[set noshowmode]]
 -- Theme
-vim.cmd[[colorscheme rasmus]]
+vim.cmd[[colorscheme tokyonight]]
