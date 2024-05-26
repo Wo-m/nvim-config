@@ -7,6 +7,10 @@ map("n", "<leader>", "<cmd>WhichKey<cr>", {})
 map("n", "<leader>q", "<cmd>q!<cr>", {})
 map("n", "<leader>w", "<cmd>wq<cr>", {})
 
+-- Escape
+map("i", "jj", "<Esc>", { noremap = true })
+map("i", "<Esc>", "", { noremap = true })
+
 -- Find Files
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})

@@ -10,7 +10,7 @@ return {
 
         -- Always open terminal in float mode (personal preference)
         keymap.set('n', '<Leader>p', '<Cmd>ToggleTerm size=40 direction=float<CR>', opts) -- open
-        map("t", "<esc>", "<C-\\><C-n> <Cmd>q<Cr>", {}) -- close
+        map("t", "jj", "<C-\\><C-n> <Cmd>q<Cr>", {}) -- close
 
         -- Open terminal in insert mode
         vim.cmd([[
