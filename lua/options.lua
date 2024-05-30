@@ -31,3 +31,20 @@ opt.list = true
 vim.cmd[[set noshowmode]]
 -- Theme
 vim.cmd[[colorscheme tokyonight]]
+
+-- use tabs in cpp files
+vim.api.nvim_create_augroup('custom_indent', { clear = true })
+vim.api.nvim_create_autocmd('FileType', {
+    group = 'custom_indent',
+    pattern = '*',
+    callback = function()
+        vim.opt.expandtab = true
+    end,
+})
+vim.api.nvim_create_autocmd('FileType', {
+    group = 'custom_indent',
+    pattern = 'cpp',
+    callback = function()
+        vim.opt.expandtab = false
+    end,
+})
