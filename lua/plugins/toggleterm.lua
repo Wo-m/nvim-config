@@ -7,9 +7,24 @@ return {
 
         local keymap = vim.keymap
         local map = vim.api.nvim_set_keymap
+        local Terminal  = require('toggleterm.terminal').Terminal
 
-        -- Always open terminal in float mode (personal preference)
-        keymap.set('n', '<Leader>p', '<Cmd>ToggleTerm size=40 direction=float<CR>', opts) -- open
+
+        --- setup terminals
+        local reg_terminal = Terminal:new({direction = 'float'})
+        local lazygit = Terminal:new({ cmd = "lazygit", direction = 'float'})
+
+        function _reg_terminal()
+          reg_terminal:toggle()
+        end
+        function _lazygit_toggle()
+          lazygit:toggle()
+        end
+
+        -- keymaps
+        vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+        vim.api.nvim_set_keymap('n', '<Leader>p', '<cmd>lua _reg_terminal()<CR>', {noremap = true, silent = true})
+
         map("t", "jj", "<C-\\><C-n> <Cmd>q<Cr>", {}) -- close
 
         -- Open terminal in insert mode
