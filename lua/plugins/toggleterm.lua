@@ -22,7 +22,7 @@ return {
         end
 
         -- keymaps
-        vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+        vim.api.nvim_set_keymap("n", "<leader>;", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
         vim.api.nvim_set_keymap('n', '<Leader>p', '<cmd>lua _reg_terminal()<CR>', {noremap = true, silent = true})
 
         map("t", "jj", "<C-\\><C-n> <Cmd>q<Cr>", {}) -- close

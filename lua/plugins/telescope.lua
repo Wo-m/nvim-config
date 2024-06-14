@@ -26,6 +26,6 @@ return {
         keymap.set("n", "<leader>fd", "<cmd>Telescope dir live_grep<cr>", { desc = "Find string in directory" })
 
         -- Show files with diffs (fg -> files git)
-        keymap.set('n', '<Leader>gp', '<Cmd>Telescope git_status<CR>', opts)
+        keymap.set('n', '<Leader>fg', '<Cmd>Telescope git_status<CR>', opts)
     end,
 }
