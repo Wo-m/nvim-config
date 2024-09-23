@@ -15,6 +15,12 @@ return {
         "pocco81/auto-save.nvim"
     },
     {
+        "m4xshen/autoclose.nvim",
+        config = function()
+            require("autoclose").setup()
+        end
+    },
+    {
         "numToStr/Comment.nvim",
         opts = {
         },
@@ -39,6 +45,7 @@ return {
     {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {}
     },
     {
         "RRethy/vim-illuminate"
