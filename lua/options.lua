@@ -34,3 +34,16 @@ vim.cmd[[set noshowmode]]
 local g = vim.g
 g.t_co = 256
 g.background = "dark"
+
+-- associate tpp files with cpp
+vim.filetype.add({
+  extension = {
+    tpp = "cpp",
+  },
+})
+
+vim.filetype.add({
+  extension = {
+    vc = "py",
+  },
+})
