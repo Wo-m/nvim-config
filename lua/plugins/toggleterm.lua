@@ -3,7 +3,12 @@ return {
     version = "*",
     config = function()
         local toggleterm = require("toggleterm")
-        toggleterm.setup({})
+
+        toggleterm.setup({
+            -- always start in insert
+            persist_mode = false,
+            start_in_insert = true,
+        })
 
         local keymap = vim.keymap
         local map = vim.api.nvim_set_keymap
@@ -26,11 +31,6 @@ return {
         vim.api.nvim_set_keymap('n', '<Leader>p', '<cmd>lua _reg_terminal()<CR>', {noremap = true, silent = true})
 
         map("t", "jj", "<C-\\><C-n> <Cmd>q<Cr>", {}) -- close
-
-        -- Open terminal in insert mode
-        vim.cmd([[
-            autocmd BufEnter * lua if vim.bo.buftype == 'terminal' then vim.cmd('startinsert!') end
-        ]])
     end,
     opts = {
         hidden=true
