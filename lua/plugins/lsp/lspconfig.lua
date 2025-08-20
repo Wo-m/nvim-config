@@ -55,6 +55,7 @@ return {
         end
 
         local capabilities = cmp_nvim_lsp.default_capabilities()
+        local servers = { "clangd" }
 
 
         lspconfig["pyright"].setup({
@@ -66,9 +67,14 @@ return {
             capabilities = capabilities,
             cmd = {
                 "clangd",
-                "--clang-tidy",
-                "--completion-style=detailed",
                 "--offset-encoding=utf-16",
+                "--malloc-trim",
+                "-j=2",
+                "--header-insertion=iwyu",
+                --"--clang-tidy",
+                --"--completion-style=detailed",
+                --"--background-index=false",
+                --"--log=verbose",
             },
             on_attach = on_attach,
             flags = { debounce_text_changes = 150 }

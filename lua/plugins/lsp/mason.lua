@@ -13,6 +13,8 @@ return {
 
         local mason_tool_installer = require("mason-tool-installer")
 
+        local servers = { "clangd" }
+
         mason.setup({
           ui = {
             icons = {
@@ -28,7 +30,6 @@ return {
           ensure_installed = {
             "lua_ls",
             "pyright",
-            "clangd"
           },
           -- auto-install configured servers (with lspconfig)
           automatic_installation = true, -- not the same as ensure_installed
