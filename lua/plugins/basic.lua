@@ -53,7 +53,7 @@ return {
             vim.o.timeoutlen = 300
         end,
     },
-    -- {
-    --     "kamykn/spelunker.vim"
-    -- },
+    {
+        "kamykn/spelunker.vim"
+    },
 }

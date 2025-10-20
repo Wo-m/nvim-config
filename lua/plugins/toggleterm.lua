@@ -5,9 +5,14 @@ return {
         local toggleterm = require("toggleterm")
 
         toggleterm.setup({
-            -- always start in insert
             persist_mode = false,
             start_in_insert = true,
+
+            -- disable spelunker in the terminal buffer
+            -- otherwise opening the terminal becomes slow as the buffer grows
+            on_create = function()
+                vim.cmd(":call spelunker#toggle_buffer()")
+            end,
         })
 
         local keymap = vim.keymap
