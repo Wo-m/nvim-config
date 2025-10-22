@@ -50,20 +50,49 @@ return {
             keymap.set("v", "<leader>fb", vim.lsp.buf.format, opts)
 
             opts.desc = "Swap Header/Source"
-            keymap.set("n", "<leader>s", "<CMD>ClangdSwitchSourceHeader<CR>", opts)
+            keymap.set("n", "<leader>s", "<CMD>LspClangdSwitchSourceHeader<CR>", opts)
 
         end
+
+        local function switch_source_header(bufnr, client)
+          local method_name = 'textDocument/switchSourceHeader'
+          ---@diagnostic disable-next-line:param-type-mismatch
+          if not client or not client:supports_method(method_name) then
+            return vim.notify(('method %s is not supported by any servers active on the current buffer'):format(method_name))
+          end
+          local params = vim.lsp.util.make_text_document_params(bufnr)
+          ---@diagnostic disable-next-line:param-type-mismatch
+          client:request(method_name, params, function(err, result)
+            if err then
+              error(tostring(err))
+            end
+            if not result then
+              vim.notify('corresponding file cannot be determined')
+              return
+            end
+            vim.cmd.edit(vim.uri_to_fname(result))
+          end, bufnr)
+        end
+
+        local on_attach_clang = function(client, bufnr)
+            vim.api.nvim_buf_create_user_command(bufnr, 'LspClangdSwitchSourceHeader', function()
+              switch_source_header(bufnr, client)
+            end, { desc = 'Switch between source/header' })
+            on_attach(client, bufnr)
+        end
+
 
         local capabilities = cmp_nvim_lsp.default_capabilities()
         local servers = { "clangd" }
 
 
-        lspconfig["pyright"].setup({
+        vim.lsp.config("pyright", {
             capabilities = capabilities,
             on_attach = on_attach,
         })
+        vim.lsp.enable("pyright")
 
-        lspconfig["clangd"].setup {
+        vim.lsp.config("clangd", {
             capabilities = capabilities,
             cmd = {
                 "clangd",
@@ -76,9 +105,11 @@ return {
                 --"--background-index=false",
                 --"--log=verbose",
             },
-            on_attach = on_attach,
+            filetypes = { "c", "cc", "cpp", "objc", "objcpp", "cuda" },
+            on_attach = on_attach_clang,
             flags = { debounce_text_changes = 150 }
-          }
+        })
+        vim.lsp.enable("clangd")
 
 
     end,
