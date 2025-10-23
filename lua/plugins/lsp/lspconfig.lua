@@ -54,6 +54,7 @@ return {
 
         end
 
+        -- TODO: figure out how to use the default on_attach (which includes this function) with a custom on attach
         local function switch_source_header(bufnr, client)
           local method_name = 'textDocument/switchSourceHeader'
           ---@diagnostic disable-next-line:param-type-mismatch
@@ -81,10 +82,13 @@ return {
             on_attach(client, bufnr)
         end
 
-
         local capabilities = cmp_nvim_lsp.default_capabilities()
-        local servers = { "clangd" }
 
+        vim.diagnostic.config({
+            virtual_text = true, -- show errors in line
+            signs = true,
+            severity_sort = true
+        })
 
         vim.lsp.config("pyright", {
             capabilities = capabilities,
