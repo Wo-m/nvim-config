@@ -7,10 +7,10 @@ return {
             "nvim-treesitter/nvim-treesitter-textobjects",
             "windwp/nvim-ts-autotag",
         },
+        tag = "v0.10.0",
+        lazy = false,
       config = function()
-        local treesitter = require("nvim-treesitter.configs")
-
-        treesitter.setup({
+        require'nvim-treesitter'.setup({
           highlight = {
             enable = true,
           },
