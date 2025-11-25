@@ -34,9 +34,6 @@ return {
             opts.desc = "See available code actions"
             keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
-            opts.desc = "Smart rename"
-            keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
-
             opts.desc = "Show documentation for what is under cursor"
             keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
@@ -51,6 +48,19 @@ return {
 
             opts.desc = "Swap Header/Source"
             keymap.set("n", "<leader>s", "<CMD>LspClangdSwitchSourceHeader<CR>", opts)
+
+            local function smart_rename_and_save()
+                -- the issue is this isn't a synchronous method
+                vim.lsp.buf.rename()
+                print("please use :wa to apply changes to all files")
+                -- vim.defer_fn(function()
+                --    vim.cmd("wa")
+                -- end, 1000) -- 200ms delay, enough time for lsp to make changes
+            end
+
+            opts.desc = "Smart rename + save"
+            keymap.set("n", "<leader>rn", smart_rename_and_save, opts)
+
 
         end
 
